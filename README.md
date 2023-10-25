@@ -1,5 +1,7 @@
-Yet another string library written in plain [modern] C. Currently the library supports dynamically allocated length prefixed 'Pascal' strings.
+On the quest for safety, yet another string library written in plain [modern] C. Currently the library supports dynamically allocated length prefixed 'Pascal' strings.
 
+
+## Background
 There is no automatic memory management features baked into C. For instance, like Rust's Borrow Checking and C++'s RAII.
 C as always requires the developer to ensure that  memory is allocated, deallocated and accessed accordingly.
 
@@ -10,6 +12,7 @@ this by getting closer to C++ and Rust but not compromising the simplicity and i
 
 
 ## Features
+### What it is?
 * Dynamically shrinkable and growable strings
 * Abstracted memory allocation and deallocation
 * Data type compatibility with C standard and existing libraries
@@ -33,8 +36,9 @@ this by getting closer to C++ and Rust but not compromising the simplicity and i
 * Constant time length and capacity query
 
 
-## Things to remember
+### Things to remember
 * Do remember that 
+  * The methods are safe only as long as the 'unsafe' functions are used with proper arguments
   * Using the data type with existing or standard 'unsafe' functions might introduce lifetime, overflow and mutability issues
   * Out of bounds access using [] operator results still results in undefined behavior
    ```c
@@ -46,7 +50,6 @@ this by getting closer to C++ and Rust but not compromising the simplicity and i
   suffix[0] = 'a';          // Ok!
   suffix[12] = 'c';         // Yikes!
   ```
-
 
 ### Tips
 * Run valgrind on your code whenever possible
